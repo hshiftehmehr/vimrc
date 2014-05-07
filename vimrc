@@ -6,12 +6,12 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " " alternatively, pass a path where Vundle should install plugins
 " "call vundle#begin('~/some/path/here')
+
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'ervandew/supertab'
 Plugin 'davidhalter/jedi-vim'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'marijnh/tern_for_vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -31,14 +31,18 @@ set foldmethod=syntax
 
 set hlsearch
 set mouse=a
-" set background=dark
 colorscheme desert
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
 
 vnoremap < <gv
 vnoremap > >gv
 
 " Auto-load vimrc
-"augroup myvimrc
-"    au!
-"    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-"augroup END
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
