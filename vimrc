@@ -10,14 +10,17 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'ervandew/supertab'
 Plugin 'davidhalter/jedi-vim'
+
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+" Optional:
+Bundle "honza/vim-snippets"
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-
-syntax on
 
 set number
 set colorcolumn=80
@@ -27,13 +30,23 @@ set expandtab
 set softtabstop=4
 set shiftwidth=4
 
-set foldmethod=syntax
+syntax on
+
+set foldmethod=indent
+set foldlevel=1
+set foldcolumn=1
+set foldminlines=5
 
 set hlsearch
 set mouse=a
-colorscheme desert
+
 if has('gui_running')
-    set background=light
+    if has("gui_macvim")
+        set background=dark
+        colorscheme desert
+    else
+        set background=light
+    endif
 else
     set background=dark
 endif
