@@ -32,10 +32,10 @@ set shiftwidth=4
 
 syntax on
 
-set foldmethod=indent
+" set foldmethod=indent
 set foldlevel=1
 set foldcolumn=1
-set foldminlines=5
+set foldminlines=25
 
 set hlsearch
 set mouse=a
@@ -53,6 +53,9 @@ endif
 
 vnoremap < <gv
 vnoremap > >gv
+
+set swapfile
+set dir=~/.vim/swap-files
 
 " Auto-load vimrc
 augroup myvimrc
