@@ -10,7 +10,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'davidhalter/jedi-vim'
+" Plugin 'davidhalter/jedi-vim'
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
@@ -38,7 +38,7 @@ set foldcolumn=1
 set foldminlines=25
 
 set hlsearch
-set mouse=a
+set mouse=i
 
 if has('gui_running')
     if has("gui_macvim")
