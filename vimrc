@@ -51,7 +51,7 @@ highlight ColorColumn ctermbg=white ctermfg=black
 if exists('+colorcolumn')
     set colorcolumn=81
 else
-    match ColorColumn /\%81v.\+/
+    match ColorColumn /\%81v./
 endif
 
 vnoremap < <gv
