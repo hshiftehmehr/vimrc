@@ -65,6 +65,7 @@ endif
 vnoremap < <gv
 vnoremap > >gv
 
+execute ':silent !mkdir -p ~/.vim/swap-files'
 set swapfile
 set dir=~/.vim/swap-files
 
