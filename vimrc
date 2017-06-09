@@ -10,7 +10,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 if hostname != "CuBox"
-    Plugin 'https://github.com/klen/python-mode.git'
+    Plugin 'https://github.com/davidhalter/jedi-vim.git'
 endif
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
