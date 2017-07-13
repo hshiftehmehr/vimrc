@@ -16,6 +16,9 @@ endif
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+set spell
+set path+=**
+
 set number
 set cursorline
 
@@ -27,9 +30,9 @@ set shiftwidth=4
 syntax on
 
 " set foldmethod=indent
-set foldlevel=1
-set foldcolumn=1
-set foldminlines=25
+" set foldlevel=1
+" set foldcolumn=1
+" set foldminlines=25
 
 set hlsearch
 set ttyfast
@@ -45,7 +48,7 @@ for scheme in [ 'default', 'desert', 'peachpuff', 'pablo' ]
   endtry
 endfor
 
-" Furthe color config is here to avoid being cleared by themes
+" Further color config is here to avoid being cleared by themes
 set background=dark
 highlight ColorColumn ctermbg=white ctermfg=black
 if exists('+colorcolumn')
