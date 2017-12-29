@@ -14,49 +14,14 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'https://github.com/vim-syntastic/syntastic.git'
 Plugin 'https://github.com/davidhalter/jedi-vim.git'
 Plugin 'https://github.com/tpope/vim-fugitive'
-Plugin 'https://github.com/tomasr/molokai'
-Plugin 'https://github.com/nanotech/jellybeans.vim'
+Plugin 'flazz/vim-colorschemes'
+" Plugin 'https://github.com/tomasr/molokai'
+" Plugin 'https://github.com/nanotech/jellybeans.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-set spell
-set path+=**
-
-set relativenumber
-set number
-set cursorline
-
-set tabstop=4
-set expandtab
-set softtabstop=4
-set shiftwidth=4
-set formatoptions-=t
-
-syntax on
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_python_pylint_post_args="--max-line-length=120"
-let g:syntastic_python_flake8_post_args="--max-line-length=120"
-let g:syntastic_always_populate_loc_list = 1
-" Toggle loc_list with 'Errors' and 'lclose'
-" let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" set foldmethod=indent
-" set foldlevel=1
-" set foldcolumn=1
-" set foldminlines=25
-
-set hlsearch
-set ttyfast
-set ttymouse=xterm2
-set mouse=a
-
-for scheme in [ 'jellybeans', 'default', 'desert', 'peachpuff', 'pablo' ]
+for scheme in [ 'jellybeans', 'default', 'molokai']
   try
     execute 'colorscheme '.scheme
     break
@@ -79,8 +44,44 @@ highlight SpellBad cterm=underline
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
+syntax on
+
+let g:syntastic_python_pylint_post_args="--max-line-length=120"
+let g:syntastic_python_flake8_post_args="--max-line-length=120"
+if exists('+colorcolumn')
+    set colorcolumn=120
+endif
+let g:syntastic_always_populate_loc_list = 1
+" Toggle loc_list with 'Errors' and 'lclose'
+" let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" set foldmethod=indent
+" set foldlevel=1
+" set foldcolumn=1
+" set foldminlines=25
+
+set hlsearch
+set ttyfast
+set ttymouse=xterm2
+set mouse=a
+
 vnoremap < <gv
 vnoremap > >gv
+
+set spell
+set path+=**
+
+set relativenumber
+set number
+set cursorline
+
+set tabstop=4
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+set formatoptions-=t
 
 execute ':silent !mkdir -p ~/.vim/swap-files'
 set swapfile
