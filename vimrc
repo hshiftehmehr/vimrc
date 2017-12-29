@@ -10,7 +10,12 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 if hostname != "CuBox"
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
     Plugin 'https://github.com/davidhalter/jedi-vim.git'
+    Plugin 'https://github.com/tpope/vim-fugitive'
+    Plugin 'https://github.com/tomasr/molokai'
+    Plugin 'https://github.com/nanotech/jellybeans.vim'
 endif
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -19,6 +24,7 @@ filetype plugin indent on    " required
 set spell
 set path+=**
 
+set relativenumber 
 set number
 set cursorline
 
@@ -26,6 +32,7 @@ set tabstop=4
 set expandtab
 set softtabstop=4
 set shiftwidth=4
+set formatoptions-=t
 
 syntax on
 
@@ -39,7 +46,7 @@ set ttyfast
 set ttymouse=xterm2
 set mouse=a
 
-for scheme in [ 'default', 'desert', 'peachpuff', 'pablo' ]
+for scheme in [ 'jellybeans', 'default', 'desert', 'peachpuff', 'pablo' ]
   try
     execute 'colorscheme '.scheme
     break
@@ -50,12 +57,14 @@ endfor
 
 " Further color config is here to avoid being cleared by themes
 set background=dark
-highlight ColorColumn ctermbg=white ctermfg=black
+highlight ColorColumn ctermbg=DarkGray " ctermfg=White
 if exists('+colorcolumn')
-    set colorcolumn=81
+    set colorcolumn=80
 else
-    match ColorColumn /\%81v./
+    match ColorColumn /\%80v./
 endif
+highlight clear SpellBad
+highlight SpellBad cterm=underline
 
 vnoremap < <gv
 vnoremap > >gv
@@ -76,3 +85,4 @@ autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
+
