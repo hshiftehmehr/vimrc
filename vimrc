@@ -9,14 +9,12 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-if hostname != "CuBox"
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
-    Plugin 'https://github.com/davidhalter/jedi-vim.git'
-    Plugin 'https://github.com/tpope/vim-fugitive'
-    Plugin 'https://github.com/tomasr/molokai'
-    Plugin 'https://github.com/nanotech/jellybeans.vim'
-endif
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'https://github.com/davidhalter/jedi-vim.git'
+Plugin 'https://github.com/tpope/vim-fugitive'
+Plugin 'https://github.com/tomasr/molokai'
+Plugin 'https://github.com/nanotech/jellybeans.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
