@@ -8,19 +8,24 @@ let hostname = substitute(system('hostname'), '\n', '', '')
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+" Vundle manages itself
+Plugin 'gmarik/Vundle.vim'
 " let Vundle manage Vundle, required
 Plugin 'Yggdroot/indentLine'
 Plugin 'davidhalter/jedi-vim.git'
-" Plugin 'flazz/vim-colorschemes'
-Plugin 'gmarik/Vundle.vim'
 Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'nanotech/jellybeans.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-syntastic/syntastic.git'
+" Colors
+" Plugin 'flazz/vim-colorschemes'
+Plugin 'Lokaltog/vim-distinguished'
+Plugin 'morhetz/gruvbox'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'tomasr/molokai'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
