@@ -19,7 +19,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-syntastic/syntastic.git'
+Plugin 'w0rp/ale'
+" Plugin 'vim-syntastic/syntastic.git'
 " Colors
 " Plugin 'flazz/vim-colorschemes'
 Plugin 'Lokaltog/vim-distinguished'
@@ -101,15 +102,18 @@ function! SetPythonOptions()
   "     match ColorColumn /\%80v./
   endif
 
+  let b:ale_python_flake8_options="
+    \ --enable-extensions=G --max-line-length=120 --inline-quotes=double"
+
   " highlight! ExtraWhitespace ctermbg=red guibg=red
   " match ExtraWhitespace /\s\+$/
 
-  let b:syntastic_python_checkers=['flake8']
-  let b:syntastic_python_flake8_post_args="
-    \ --enable-extensions=G --max-line-length=120 --inline-quotes=double"
-
-  let b:syntastic_always_populate_loc_list = 1
-  " Toggle loc_list with 'Errors' and 'lclose'
-  " let b:syntastic_auto_loc_list = 1
-  let b:syntastic_check_on_wq = 0
+  " let b:syntastic_python_checkers=['flake8']
+  " let b:syntastic_python_flake8_post_args="
+  "   \ --enable-extensions=G --max-line-length=120 --inline-quotes=double"
+  "
+  " let b:syntastic_always_populate_loc_list = 1
+  " " Toggle loc_list with 'Errors' and 'lclose'
+  " " let b:syntastic_auto_loc_list = 1
+  " let b:syntastic_check_on_wq = 0
 endfunction
