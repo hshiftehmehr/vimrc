@@ -41,13 +41,6 @@ for scheme in [ 'jellybeans', 'default' ]
   endtry
 endfor
 
-if exists('+colorcolumn')
-  set colorcolumn=80
-endif
-
-let g:syntastic_check_on_open = 1
-
-
 " Further color config is here to avoid being cleared by themes
 set spell
 set cursorline
@@ -58,6 +51,7 @@ set mouse=a
 set clipboard=unnamed
 set relativenumber
 set number
+set colorcolumn=80
 
 syntax on
 set background=dark
@@ -94,26 +88,12 @@ function! SetPythonOptions()
   setlocal softtabstop=4
   setlocal shiftwidth=4
   setlocal formatoptions-=t
+  setlocal colorcolumn=120
 
-  if exists('+colorcolumn')
-    setlocal colorcolumn=120
-  " else
-  "     highlight! ColorColumn ctermbg=DarkGray guibg=DarkGray ctermfg=White
-  "     match ColorColumn /\%80v./
-  endif
-
+  " pip install flake8 flake8-import-order flake8-import-style \
+  "     flake8-logging-format flake8-mock flake8-quotes pylint autopep8 yapf
   let b:ale_python_flake8_options="
     \ --enable-extensions=G --max-line-length=120 --inline-quotes=double"
-
-  " highlight! ExtraWhitespace ctermbg=red guibg=red
-  " match ExtraWhitespace /\s\+$/
-
-  " let b:syntastic_python_checkers=['flake8']
-  " let b:syntastic_python_flake8_post_args="
-  "   \ --enable-extensions=G --max-line-length=120 --inline-quotes=double"
-  "
-  " let b:syntastic_always_populate_loc_list = 1
-  " " Toggle loc_list with 'Errors' and 'lclose'
-  " " let b:syntastic_auto_loc_list = 1
-  " let b:syntastic_check_on_wq = 0
+  let b:ale_python_pylint_options="
+    \ --max-line-length=120"
 endfunction
