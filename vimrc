@@ -20,6 +20,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'w0rp/ale'
+" NERDTree
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Plugin 'vim-syntastic/syntastic.git'
 " Colors
 " Plugin 'flazz/vim-colorschemes'
@@ -30,7 +33,6 @@ Plugin 'tomasr/molokai'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-
 
 for scheme in [ 'jellybeans', 'default' ]
   try
@@ -79,6 +81,15 @@ autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   execute "normal! g`\"" |
   \ endif
+
+" Quit if NERDTree is the only open window
+autocmd bufenter *
+  \ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) |
+  \   quit |
+  \ endif
+let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeShowIgnoredStatus = 1
+map <leader>f :NERDTreeToggle<CR>
 
 autocmd FileType python call SetPythonOptions()
 
