@@ -72,8 +72,11 @@ set dir=~/.vim/swap-files
 " Auto-load vimrc
 augroup MYVIMRC
   autocmd!
-  autocmd BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC |
-    if has('gui_running') | so $MYGVIMRC | endif
+  autocmd BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc
+    \ source $MYVIMRC |
+    \ if has('gui_running') |
+    \    source $MYGVIMRC |
+    \ endif
 augroup END
 
 " Return to last edit position when opening files
