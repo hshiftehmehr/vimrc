@@ -4,6 +4,9 @@ filetype off
 
 let hostname = substitute(system('hostname'), '\n', '', '')
 
+" -----------------------------------------------------------------------------
+" Bundles
+" -----------------------------------------------------------------------------
 " set the runtime path to include Vundle and initialize
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -34,6 +37,9 @@ Plugin 'tomasr/molokai'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" -----------------------------------------------------------------------------
+" Local config
+" -----------------------------------------------------------------------------
 for scheme in [ 'jellybeans', 'default' ]
   try
     execute 'colorscheme '.scheme
@@ -69,6 +75,9 @@ execute ':silent !mkdir -p ~/.vim/swap-files'
 set swapfile
 set dir=~/.vim/swap-files
 
+" -----------------------------------------------------------------------------
+" vim
+" -----------------------------------------------------------------------------
 " Auto-load vimrc
 augroup MYVIMRC
   autocmd!
@@ -85,15 +94,26 @@ autocmd BufReadPost *
   \   execute "normal! g`\"" |
   \ endif
 
+" -----------------------------------------------------------------------------
+" NERDTree
+" -----------------------------------------------------------------------------
 " Quit if NERDTree is the only open window
 autocmd bufenter *
   \ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) |
   \   quit |
   \ endif
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter *
+  \ if argc() == 0 && !exists("s:std_in") |
+  \   NERDTree |
+  \ endif
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeShowIgnoredStatus = 1
 map <leader>f :NERDTreeToggle<CR>
 
+" -----------------------------------------------------------------------------
+" Python
+" -----------------------------------------------------------------------------
 autocmd FileType python call SetPythonOptions()
 
 function! SetPythonOptions()
