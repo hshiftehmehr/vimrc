@@ -23,6 +23,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'w0rp/ale'
+Plugin 'dhruvasagar/vim-table-mode'
 " NERDTree
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -74,6 +75,13 @@ set path+=**
 execute ':silent !mkdir -p ~/.vim/swap-files'
 set swapfile
 set dir=~/.vim/swap-files
+
+" -----------------------------------------------------------------------------
+" vim-table-mode
+" -----------------------------------------------------------------------------
+" ReST compatible tables
+let g:table_mode_corner_corner='+'
+let g:table_mode_header_fillchar='='
 
 " -----------------------------------------------------------------------------
 " vim
