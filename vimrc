@@ -14,26 +14,22 @@ call vundle#begin()
 " Vundle manages itself
 Plugin 'gmarik/Vundle.vim'
 " let Vundle manage Vundle, required
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'Yggdroot/indentLine'
 Plugin 'davidhalter/jedi-vim.git'
+Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'kien/ctrlp.vim'
 Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'w0rp/ale'
-Plugin 'dhruvasagar/vim-table-mode'
-" NERDTree
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-" Plugin 'vim-syntastic/syntastic.git'
 " Colors
-" Plugin 'flazz/vim-colorschemes'
 Plugin 'Lokaltog/vim-distinguished'
-Plugin 'morhetz/gruvbox'
 Plugin 'nanotech/jellybeans.vim'
-Plugin 'tomasr/molokai'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -57,7 +53,7 @@ set hlsearch
 set ttyfast
 set ttymouse=sgr
 set mouse=a
-set clipboard=unnamed
+" set clipboard=unnamed
 set relativenumber
 set number
 set colorcolumn=80
@@ -70,11 +66,14 @@ highlight SpellBad cterm=underline
 vnoremap < <gv
 vnoremap > >gv
 
-set path+=**
-
 execute ':silent !mkdir -p ~/.vim/swap-files'
 set swapfile
 set dir=~/.vim/swap-files
+
+" -----------------------------------------------------------------------------
+" vim-airline
+" -----------------------------------------------------------------------------
+let g:airline#extensions#tabline#enabled = 1
 
 " -----------------------------------------------------------------------------
 " vim-table-mode
@@ -90,8 +89,10 @@ let g:table_mode_header_fillchar='='
 augroup MYVIMRC
   autocmd!
   autocmd BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc
-    \ source $MYVIMRC |
-    \ if has('gui_running') |
+    \ if filereadable($MYVIMRC) |
+    \    source $MYVIMRC |
+    \ endif |
+    \ if has('gui_running') && filereadable($MYGVIMRC) |
     \    source $MYGVIMRC |
     \ endif
 augroup END
@@ -123,7 +124,6 @@ map <leader>f :NERDTreeToggle<CR>
 " Python
 " -----------------------------------------------------------------------------
 autocmd FileType python call SetPythonOptions()
-
 function! SetPythonOptions()
   setlocal expandtab
   setlocal tabstop=4
