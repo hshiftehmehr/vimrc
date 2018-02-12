@@ -83,6 +83,11 @@ let g:table_mode_corner_corner='+'
 let g:table_mode_header_fillchar='='
 
 " -----------------------------------------------------------------------------
+" CtrlP
+" -----------------------------------------------------------------------------
+" let g:ctrlp_map = '<leader>z'
+
+" -----------------------------------------------------------------------------
 " vim
 " -----------------------------------------------------------------------------
 " Auto-load vimrc
@@ -118,6 +123,7 @@ autocmd VimEnter *
   \ endif
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeShowIgnoredStatus = 1
+let g:NERDTreeIgnore = ['\.pyc$']
 map <leader>f :NERDTreeToggle<CR>
 
 " -----------------------------------------------------------------------------
